@@ -1,0 +1,129 @@
+body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.wraper{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:rgb(222, 244, 248) ;
+}
+.main-content{
+    width: 400px;
+    height: 360px;
+    margin: auto;
+    margin-top: 65px;
+    border: 1px solid rgb(223, 235, 234);
+    box-shadow: 10px 5px 5px rgba(33, 95, 219,0.4);
+    overflow: hidden;
+    transition: .3s;
+}
+.box1{
+position: relative;
+
+}
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 50px;
+    align-items: center;
+    overflow: hidden;
+}
+header button{
+    display: flex;
+    width: 50%;
+    height: 100%;
+   justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    outline: none;
+    border: 0;
+    transition: .3s;
+}
+#h4-1{
+    background-color: rgb(253, 253, 253);
+}
+#h4-2{
+    background-color: rgb(182, 182, 182);
+}
+.box1-content{
+    width: 360px;
+    margin: 5px 20px 5px 20px;
+    
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    transition: .3s;
+}
+ input{
+    width: 85%;
+    height: 15px;
+    padding: 1rem;
+    padding-left: 2rem;
+    margin: auto;
+    margin-top: 22px;
+    position: relative;
+    border: 2px solid rgb(223, 235, 234);
+    border-radius: 5px;
+    outline: none;
+}
+.box1-content #submit{
+    margin-top: 40px;
+    text-align: center;
+    padding: 0;
+    height: 45px;
+    background-color: rgb(33, 95, 219);
+    border: 0;
+    outline: none;
+}
+
+
+.box1-content input :focus{
+    outline: none;
+}
+#register-form{
+ position: absolute;
+ left: 420px;   
+ 
+ transition: .3s;
+}
+.box1-content span{
+    position: absolute;
+    font-size:16px ;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(221, 64, 64);
+    visibility: hidden;
+}
+.error{
+border-color: rgb(221, 64, 64)
+   
+}
+#nameError{
+    top: 75px;
+}
+#lastnameError{
+    top: 148px;
+}
+#emailError{
+    top: 220px;
+}
+#passwordError{
+    top: 295px;
+}
+#login-form span{
+    position: absolute;
+    font-size:16px ;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(221, 64, 64);
+    visibility: hidden;
+}
+#loginEmailError{
+    top:74px;
+}
+#loginPasswordError{
+    top: 149px;
+}

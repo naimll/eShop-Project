@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <link href="../../CSS/Login-Register-style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+        integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+    <script type="text/javascript" src="../../JavaScript/script2.js"></script>
+    <script>
+        var z=document.getElementById('nameR');
+       
+        document.addEventListener('DOMContentLoaded',function(){
+
+            var v=document.getElementById('nameR');
+            
+        });
+    </script>
+</head>
+
+<body>
+    
+    <div class="main-content" id="main">
+        <div class="box1">
+            <header>
+                <button id="h4-1" onclick="loginSlide()">Login</button>
+                <button id="h4-2" onclick="registerSlide()">Register</button>
+            </header>
+            <div class="box1-content" id="login-form">
+
+                <input type="email" name="email" placeholder="Email" id="emailL"/>
+                <span id="loginEmailError">asdas</span>
+                <input type="password" name="password" placeholder="Password" id="passwordL">
+                <span id="loginPasswordError">asdas</span>
+                <input type="submit" name="submit-button" placeholder="Login" value="Login" id="submit" onclick="validateUserToLogin()">
+               
+            </div>
+            <div id="register-form" class=" box1-content">
+                <input type="text" name="name" placeholder="Name" id="nameR" >
+                <span  id="nameError">asd</span>
+                <input type="text" name="lastname" placeholder="Last Name" id="lastnameR" >
+                <span id="lastnameError">asd</span>
+                <input type="email" name="email" placeholder="Email" id="emailR">
+                <span id="emailError">asdasd</span>
+                <input type="password" name="password" placeholder="Password" id="passwordR">
+                <span id="passwordError">asd</span>
+                <input type="submit" name="submit-button" value="Register" id="submit" onclick="formvalidation()">
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../CSS/style1.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+        integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../../CSS/contact-style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../../JavaScript/script2.js"></script>
+    <title>Contact</title>
+</head>
+<body>
+    <div class="header">
+        <h1>TESLA SHOP</h1>
+        <div class="nav">
+            <ul>
+                <li><a href="home-page.html">Home</a></li>
+                <li><a href="contact-us.html">Contact</a></li>
+                <li><a href="aboutus-form.html">About Us</a></li>
+                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i></a></li>
+                <li><a href="Login-Register-form.html">Login</a></li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="b-side">
+        <div class="banner-contact">
+            <p>Home/Contact</p>
+        </div>
+    </div>
+    <div class="contact-content">
+        <h3 class="title">Contact Information</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <div class="contact-form">
+            <form action="">
+                
+                <input type="text" name="name" id="contact-name" placeholder="Name">
+                <span id="contact-nameError">test</span>
+                <input type="text" name="lastname" id="contact-lastname" placeholder="Last Name">
+                <span id="contact-lastnameError">test</span>
+                <input type="email" name="email" id="contact-email" placeholder="Email">
+                <span id="contact-emailError">test</span>
+                <textarea name="Message" id="message-area" cols="10" rows="6" placeholder="Message" ></textarea>
+                <span id="contact-messageError">test</span>
+                <div class="country-and-age">
+                    <div class="col-span">
+                <select name="country" id="contact-country">
+                    <option value="">Country</option>
+                    <option value="">Kosovo</option>
+                    <option value="">Albania</option>
+                    <option value="">USA</option>
+                    <option value="">Germany</option>
+                    <option value="">Italy</option>
+                    <option value="">UK</option>
+                    <option value="">France</option>
+                </select>
+                <span id="contact-selectError">test</span>
+            </div>
+            <div class="col-span">
+                <input type="number" name="age" id="contact-age" placeholder="Age">
+                <span id="contact-ageError" class="col-span1">test</span>
+            </div>
+            </div>
+            <input type="submit" value="Submit" id="contact-submit">
+            
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

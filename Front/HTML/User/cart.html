@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="../../CSS/cart.css">
+    <link href="../../CSS/style1.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+        integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div class="header-parent">
+        <div class="header">
+            <h1>TESLA SHOP</h1>
+            <div class="nav">
+                <ul>
+                    <li><a href="home-page.html">Home</a></li>
+                    <li><a href="contact-us.html">Contact</a></li>
+                    <li><a href="aboutus-form.html">About Us</a></li>
+                    <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                    <li><a href="Login-Register-form.html">Login</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <main>
+        <div class="basket">
+            <div class="cart-labels">
+                <ul>
+                    <li class="item">Item</li>
+                    <li class="price">Price</li>
+                    <li class="quantity">Quantity</li>
+                    <li class="total">Total</li>
+                </ul>
+            </div>
+            <div class="cart-product">
+                <div class="item">
+                    <div class="product-image">
+                        <img src="https://www.neptun-ks.com/2020/03/10/artikl869050695.jpeg" alt="Samsung" class="product-frame">
+                    </div>
+                    <div class="product-details">
+                        <h1>Samsung S20</h1>
+                        <p><strong>Ultra Camera</strong></p>
+                        <p>Product Code - 23</p>
+                    </div>
+                </div>
+                <div class="price">1000.00</div>
+                <div class="quantity">
+                    <input type="number" value="1" min="1" class="quantity-field">
+                </div>
+                <div class="subtotal">1000.00</div>
+                <div class="remove">
+                    <button>Remove</button>
+                </div>
+            </div>
+            <div class="cart-product">
+                <div class="item">
+                    <div class="product-image">
+                        <img src="https://www.neptun-ks.com/2019/10/24/artikl1076875737.jpeg" alt="Iphone" class="product-frame">
+                    </div>
+                    <div class="product-details">
+                        <h1>Iphone 11</h1>
+                        <p><strong>Pro</strong></p>
+                        <p>Product Code - 24</p>
+                    </div>
+                </div>
+                <div class="price">1200.00</div>
+                <div class="quantity">
+                    <input type="number" value="1" min="1" class="quantity-field">
+                </div>
+                <div class="subtotal">1200.00</div>
+                <div class="remove">
+                    <button>Remove</button>
+                </div>
+            </div>
+        </div>
+        <div class="action-side">
+            <div class="price-side">
+                <h2> <span class="total-items"></span> item in your cart</h2>
+                <h2 class="total-value">Total Price :<span id="basket-total">1000</span>$</h2>
+            </div>
+            <div class="proceed">
+                <button  onclick="window.location.href = 'checkout.html'">Checkout</button>
+               
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="../../JavaScript/cart.js"></script>
+</body>
+
+</html>
