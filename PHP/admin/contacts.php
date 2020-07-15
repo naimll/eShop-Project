@@ -32,10 +32,10 @@
 <body>
     
     <?php
-    require './../controllers/ContactController.php';
+    require './../controller/contactController.php';
 
     $contact = new ContactController;
-    $contacts = $contact->all();
+    $contacts = $contact->getAllContact();
 
     ?>
 
@@ -45,28 +45,30 @@
 
         <div id="dashboard-container">
             <div class="content-title">
-                <h1 class="page-title"><a href="users.php">Dashboard</a></h1>
+                <h1 class="page-title"><a href="users.php">Dashboard - Contacts</a></h1>
             </div>
             <div class="main-content">
                 <table class="table">
                     <tr class="table-head">
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Surname</th>
+                        <th>Lastname</th>
                         <th>Email</th>
                         <th>Message</th>
-                        <th>Location</th>
+                        <th>Country</th>
+                        <th>Age</th>
                         <th></th>
                     </tr>
                     <?php foreach ($contacts as $contact) : ?>
                         <tr>
-                            <td><?php echo $contact['id'] ?></td>
-                            <td><?php echo $contact['name'] ?></td>
-                            <td><?php echo $contact['surname'] ?></td>
-                            <td><?php echo $contact['email'] ?></td>
-                            <td><?php echo $contact['description'] ?></td>
-                            <td><?php echo $contact['shteti'] ?></td>
-                            <td><a href="controllers/delete-contact.php?id=<?php echo $contact['id'] ?>">Remove</a></td>
+                            <td><?php echo $contact['c_id'] ?></td>
+                            <td><?php echo $contact['c_name'] ?></td>
+                            <td><?php echo $contact['c_lastname'] ?></td>
+                            <td><?php echo $contact['c_email'] ?></td>
+                            <td><?php echo $contact['c_message'] ?></td>
+                            <td><?php echo $contact['c_country'] ?></td>
+                            <td><?php echo $contact['c_age'] ?></td>
+                            <td><a href="controllers/delete-contact.php?id=<?php echo $contact['c_id'] ?>">Remove</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </table>

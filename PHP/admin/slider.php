@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -140,7 +141,7 @@
 <body>
 
     <?php
-    require './../controllers/SliderController.php';
+    require './../controller/SliderController.php';
 
     $slider = new SliderController;
     $sliders = $slider->all();
@@ -157,7 +158,7 @@
 
         <div id="dashboard-container">
             <div class="content-title">
-                <h1 class="page-title"><a href="users.php">Dashboard</a></h1>
+                <h1 class="page-title"><a href="users.php">Dashboard - Sliders</a></h1>
             </div>
             <div class="main-content">
                 <table class="table">
@@ -171,10 +172,10 @@
                     <?php foreach ($sliders as $slider) : ?>
                         <tr>
                             <td>Image</td>
-                            <td><?php echo $slider['slider_image'] ?></td>
+                            <td><?php echo $slider['s_image'] ?></td>
                             <td></td>
-                            <td><a href="controllers/edit-slider.php?id=<?php echo $slider['slider_id'] ?>">Edit</a></td>
-                            <td><a href="controllers/delete-slider.php?id=<?php echo $slider['slider_id'] ?>">Remove</a></td>
+                            <td><a href="controllers/edit-slider.php?id=<?php echo $slider['s_id'] ?>">Edit</a></td>
+                            <td><a href="controllers/delete-slider.php?id=<?php echo $slider['s_id'] ?>">Remove</a></td>
                         </tr>
                     <?php endforeach ?>
                     <!-- <tr>

@@ -15,8 +15,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
 }
 $cart = '';
-     if (isset($_SESSION['user_id'])) {
+if (isset($_SESSION['user_id'])) {
+	if(!empty($_POST['name'])&& !empty($_POST['lastname'])&& !empty($_POST['email'])){
         $cart = 'cart.php';
+	}
+	else{
+
+	echo "All fields are required!";
+	}
     } else {
         $cart = 'login-register.php';
     }

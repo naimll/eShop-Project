@@ -1,5 +1,5 @@
 <?php
-    require './../../controllers/ContactController.php';
+    require './../../controller/contactController.php';
 
     $contact = new ContactController;
 

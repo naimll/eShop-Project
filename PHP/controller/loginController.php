@@ -13,24 +13,24 @@ class LoginController
 
     public function login($request)
     {
-        $query = $this->conn->pdo->prepare('SELECT u_id,u_name,u_lastname,u_email,u_password,u_isAdmin FROM users WHERE u_email = :email');
-        $query->bindParam(':email', $request['email']);
+        $query = $this->conn->pdo->prepare('SELECT u_id as id,u_name as name,u_lastname as lastname,u_email as email,u_password as password,u_isAdmin as isAdmin FROM users WHERE u_email = :email');
+        $query->bindParam(':email', $request['Lemail']);
         $query->execute();
 
         $user = $query->fetch();
         
         if(count($user) > 0){
-           
-           
-            $_SESSION['user_id'] = $user['u_id'];
-            $_SESSION['name'] = $user['u_name'];
-            $_SESSION['lastname']=$user['u_lastname'];
-            $_SESSION['password']=$user['u_password'];
-            $_SESSION['is_admin'] = $user['u_isAdmin']; 
-            
-            if($_SESSION['password']==$request['password']){
+            $password=$request['Lpassword'];
+            $password=md5($password);
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['name'] = $user['name'];
+            $_SESSION['lastname']=$user['lastname'];
+            $_SESSION['password']=$user['password'];
+            $_SESSION['is_admin'] = $user['isAdmin']; 
+          
+            if($_SESSION['password']==$password){
                 if ($_SESSION['is_admin']==1) {
-                    header("Location: admin/users.php");
+                    header("Location: ADMIN/users.php");
                 } else {
                     header("Location: home.php");
                 }

@@ -1,5 +1,5 @@
 <?php
-    require './../../controllers/UserController.php';
+    require './../../controller/userController.php';
 
     $user = new UserController;
 

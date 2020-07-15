@@ -1,8 +1,7 @@
 <?php
-
-
-include_once './database/database.php';
-
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= '/eShop-Project/PHP/database/database.php';
+include_once($path);
 class SliderController
 {
     protected $db;
@@ -22,12 +21,12 @@ class SliderController
 
     public function store($request)
     {
-        $query = $this->db->pdo->prepare('INSERT INTO slider (slider_image)
+        $query = $this->db->pdo->prepare('INSERT INTO slider (s_image)
                                      VALUES (:slider_image)');
         $query->bindParam(':slider_image', $request['slider_image']);
         $query->execute();
 
-        return header('Location: slider.php');
+        // return header('Location: slider.php');
     }
 
     public function edit($slider_id)
@@ -47,7 +46,7 @@ class SliderController
             'slider_id' => $slider_id
         ]);
 
-        return header('Location: ../slider.php');
+        // return header('Location: ../slider.php');
     }
     public function count(){
         $query=$this->db->pdo->prepare('select count(s_id) from slider');
@@ -56,9 +55,9 @@ class SliderController
     }
     public function destroy($slider_id)
     {
-        $query = $this->db->pdo->prepare('DELETE FROM slider WHERE slider_id = :slider_id');
+        $query = $this->db->pdo->prepare('DELETE FROM slider WHERE s_id = :slider_id');
         $query->execute(['slider_id' => $slider_id]);
 
-        return header('Location: slider.php');
+        // return header('Location: slider.php');
     }
 }

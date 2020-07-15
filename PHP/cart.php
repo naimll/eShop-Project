@@ -15,8 +15,9 @@
     <?php
         require './controller/CartController.php';
         $cart = new CartController;
-        $carts = $cart->all();
+        $carts = $cart->getByUser($_SESSION['user_id']);
         $cart = '';
+        
      if (isset($_SESSION['user_id'])) {
         $cart = 'cart.php';
     } else {
@@ -85,7 +86,7 @@
                 <h2 class="total-value">Total Price :<span id="basket-total">0</span>$</h2>
             </div>
             <div class="proceed">
-                <button  onclick="window.location.href = 'checkout.html'">Checkout</button>
+                <button type="submit" name="checkoutbtn"><a href="checkout.php">Checkout</a></button>
                
             </div>
         </div>

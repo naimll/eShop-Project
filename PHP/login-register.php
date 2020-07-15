@@ -17,14 +17,25 @@
 
      $user = new LoginController();
      $userReg = new UserController;
-     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+     if (isset($_POST['submited'])) {
+        if(!empty($_POST['Lemail']) && !empty($_POST['Lpassword'])){
+           $user->login($_POST);
+       }
+   else{
+       echo "All fields are required!"; 
+   }
+    }
+     if(isset($_POST['submitedRegister'])){ 
         
-         $user->login($_POST);
+    if(!empty($_POST['Rname']) && !empty($_POST['Rlastname']) && !empty($_POST['Remail']) && !empty($_POST['Rpassword'])){
+               $user->store($_POST);
+       }
+   else{
+       echo "All fields are required!";
+   }	
         
-     }
-    //  if(isset($_POST['submitedlogin'])){
-    //     $user->create($_POST);
-    //  }
+    }
+    
     ?>
     <div class="main-content" id="main">
         <div class="box1">
@@ -34,32 +45,33 @@
             </header>
             <div class="box1-content" id="login-form">
                 <form action="" method="POST" id="Login-form">
-                <input type="email" name="email" placeholder="Email" id="emailL"/>
+                <input type="email" name="Lemail" placeholder="Email" id="emailL"/>
                 <span id="loginEmailError">asdas</span>
-                <input type="password" name="password" placeholder="Password" id="passwordL">
+                <input type="password" name="Lpassword" placeholder="Password" id="passwordL">
                 <span id="loginPasswordError">asdas</span>
-                <input type="submit" name="submitedlogin" placeholder="Login" value="Login" id="submitLogin" >
+                <input type="submit" name="submited" placeholder="Login" value="Login" id="submitLogin" class="submit" style="background-color: rgb(33, 95, 219);height: 45px; text-align: center;width:100%">
                </form>
             </div>
             <!-- <script>
-                 var x=document.getElementById("submit");
+                 var x=document.getElementById("submitLogin");
                 x.addEventListener('click',function(e){
                  e.preventDefault();
-                  alert("asfasgf");
+                 
                 });
             </script> -->
          
             <div id="register-form" class=" box1-content">
-                <input type="text" name="name" placeholder="Name" id="nameR" >
+                <form action="" method="POST" id='Reg-form'>
+                <input type="text" name="Rname" placeholder="Name" id="nameR" >
                 <span  id="nameError">asd</span>
-                <input type="text" name="lastname" placeholder="Last Name" id="lastnameR" >
+                <input type="text" name="Rlastname" placeholder="Last Name" id="lastnameR" >
                 <span id="lastnameError">asd</span>
-                <input type="email" name="email" placeholder="Email" id="emailR">
+                <input type="email" name="Remail" placeholder="Email" id="emailR">
                 <span id="emailError">asdasd</span>
-                <input type="password" name="password" placeholder="Password" id="passwordR">
+                <input type="password" name="Rpassword" placeholder="Password" id="passwordR">
                 <span id="passwordError">asd</span>
-                <input type="submit" name="submitedregister" value="Register" id="submit" onclick="formvalidation()">
-
+                <input type="submit" name="submitedregister" value="Register" id="submitReg" >
+            </form>
             </div>
         </div>
     </div>

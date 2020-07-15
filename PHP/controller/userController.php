@@ -1,7 +1,8 @@
 <?php
 
-
-include_once './database/database.php';
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= '/eShop-Project/PHP/database/database.php';
+include_once($path);
 
 class UserController
 {
@@ -25,24 +26,24 @@ class UserController
         isset($request['is_admin']) ? $isAdmin = 1 : $isAdmin = 0;
 		$password1=$request['password'];
 		$password1=md5($password1);
-		$query1=$this->db->pdo->prepare('SELECT * FROM users WHERE email=:email');
+		$query1=$this->db->pdo->prepare('SELECT * FROM users WHERE u_email=:email');
 		$query1->bindParam(':email', $request['email']);
 		$query1->execute();
 		$user = $query1->fetchall();
 		if(count($user)==0){
-        $query = $this->db->pdo->prepare('INSERT INTO users (name, email, surname, password, is_admin) VALUES (:name, :email, :surname, :password, :is_admin)');
+        $query = $this->db->pdo->prepare('INSERT INTO users (u_name, u_lastname, u_email, u_password, u_isAdmin) VALUES (:name, :lastname, :email,  :password, :is_admin)');
         $query->bindParam(':name', $request['name']);
         $query->bindParam(':email', $request['email']);
-        $query->bindParam(':surname', $request['surname']);
+        $query->bindParam(':lastname', $request['lastname']);
         $query->bindParam(':password', $password1);
         $query->bindParam(':is_admin', $isAdmin);
         $query->execute();
 		
 
-        return header("Location: users.php");
+        // return header("Location: users.php");
 		}
 		else{
-			echo 'Ky email ekziston';
+			echo '<h1>Ky email ekziston</h1>';
 		}
     }
 
@@ -50,29 +51,20 @@ class UserController
     {
 		
 		
-		$password1=$request['password'];
+		$password1=$request['Rpassword'];
 		$password1=md5($password1);
 		
-		
-		$query1=$this->db->pdo->prepare('SELECT * FROM users WHERE email=:email');
-		$query1->bindParam(':email', $request['email']);
-		$query1->execute();
-		$user = $query1->fetchall();
-		if(count($user)==0){
-        $query = $this->db->pdo->prepare('INSERT INTO users (name, email, surname, password) VALUES (:name, :email, :surname, :password)');
-        $query->bindParam(':name', $request['name']);
-        $query->bindParam(':email', $request['email']);
-        $query->bindParam(':surname', $request['surname']);
+        $query = $this->db->pdo->prepare('INSERT INTO users (u_name,u_lastname,u_email,u_password,u_isAdmin) VALUES (:name,:surname,:email, :password,0)');
+        $query->bindParam(':name', $request['Rname']);
+        $query->bindParam(':email', $request['Remail']);
+        $query->bindParam(':surname', $request['Rlastname']);
         $query->bindParam(':password',$password1 );
         
         $query->execute();
+		echo '<h1>SUCCES</h1>';
 		
+    //    return header("Location: login-register.php");
 		
-        return header("Location: login.php");
-		}
-		else{
-			echo "Ky email ekziston";
-		}
 		
     }
 
@@ -101,7 +93,7 @@ class UserController
 
     public function destroy($id)
     {
-        $query = $this->db->pdo->prepare('DELETE FROM users WHERE id = :id');
+        $query = $this->db->pdo->prepare('DELETE FROM users WHERE u_id = :id');
         $query->execute(['id' => $id]);
 
         

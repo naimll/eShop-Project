@@ -1,8 +1,8 @@
-<?php
-if (isset($_SESSION['id'])) { } else {
+<!-- <?php
+if (isset($_SESSION['user_id'])) { } else {
     header("Location: ../../login-register.php");
 }
-?>
+?> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,11 +10,12 @@ if (isset($_SESSION['id'])) { } else {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" media="screen" href="./../css/styles.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../CSS/styles.css">
 </head>
 
 <body>
     <nav id="dashboard-sidebar">
+    
         <h2 style="margin-left: 40px;color:#fff;margin-top: -10px;"><?php echo $_SESSION['name']; ?></h2>
         <ul>
             <li><span>Navigation</span></li>

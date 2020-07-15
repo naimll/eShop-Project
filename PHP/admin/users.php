@@ -1,3 +1,9 @@
+<?php
+ session_start();
+if (!isset($_SESSION['user_id'])) { 
+     header("Location: ../login-register.php");
+} 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,8 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Users</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/styles.css">
-    <script src="../javascript/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../CSS/styles.css">
+    <script src="../JavaScript/jquery-1.11.3.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="apple-touch-icon" sizes="57x57" href="../images/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="../images/apple-icon-60x60.png">
@@ -137,7 +143,7 @@
 <body>
 
     <?php
-    require '../controller/userController.php';
+    require './../controller/userController.php';
 
     $user = new UserController;
     $users = $user->all();
@@ -150,11 +156,11 @@
 
     <div class="dashboard-wrapper">
 
-        <?php include 'controller/sidebar.php' ?>
+        <?php include 'includes/sidebar.php' ?>
 
         <div id="dashboard-container">
             <div class="content-title">
-                <h1 class="page-title"><a href="users.php">Dashboard</a></h1>
+                <h1 class="page-title"><a href="users.php">Dashboard - Users</a></h1>
             </div>
             <div class="main-content">
                 <table class="table">
@@ -164,7 +170,7 @@
                         <th>Surname</th>
                         <th>Email</th>
                         <th>Admin</th>
-                        <th>Date of Creation</th>
+                        
                         <th><button id="myBtn" class="button1" style="float: right">ADD USER</button></th>
                     </tr>
                     <?php foreach ($users as $user) : ?>
@@ -175,18 +181,10 @@
                             <td><?php echo $user['u_email'] ?></td>
                             <td><?php echo $user['u_isAdmin'] == 1 ? "Yes" : "No" ?></td>
                             
-                            <td><a href="controller/delete-user.php?id=<?php echo $user["u_id"] ?>">Remove</a></td>
+                            <td><a href="controllers/delete-user.php?id=<?php echo $user["u_id"] ?>">Remove</a></td>
                         </tr>
                     <?php endforeach ?>
-                    <!-- <tr>
-                        <td>123456</td>
-                        <td>Milot</td>
-                        <td>Aliu</td>
-                        <td>ma@gmail.com</td>
-                        <td>Yes</td>
-                        <td>Date</td>
-                        <td><a href="#">Remove</a></td>
-                    </tr> -->
+                    
                 </table>
 
             </div>
@@ -199,12 +197,12 @@
                     <div class="modal-body">
                         <form action="" method="POST">
                             <div id="contact-form-group" class="form-group">
-                                <label id="heading-contact-phone" class="contact-phone">Emri:</label>
+                                <label id="heading-contact-phone" class="contact-phone">Name:</label>
                                 <input id="inputButtons" type="text" name="name" style="position:relative;left:5px;">
                             </div>
                             <div class="form-group">
-                                <label id="title-contact-phone" class="contact-phone">Mbiemri:</label>
-                                <input id="inputButtons" type="text" name="surname" style="position:relative;left:19px;">
+                                <label id="title-contact-phone" class="contact-phone">Last Name:</label>
+                                <input id="inputButtons" type="text" name="lastname" style="position:relative;left:19px;">
                             </div>
                             <div class="form-group">
                                 <label id="title-contact-phone" class="contact-phone">Email:</label>

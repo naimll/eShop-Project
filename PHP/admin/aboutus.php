@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -138,7 +139,7 @@
 <body>
     
     <?php
-    require './../controllers/AboutUsController.php';
+    require './../controller/AboutUsController.php';
 
     $about = new AboutUsController;
     $about_us = $about->edit(1);
@@ -157,7 +158,7 @@
 
         <div id="dashboard-container">
             <div class="content-title">
-                <h1 class="page-title"><a href="users.php">Dashboard</a></h1>
+                <h1 class="page-title"><a href="users.php">Dashboard - About us</a></h1>
             </div>
             <div class="main-content">
                 <table class="table">
@@ -168,29 +169,20 @@
                     </tr>
                     <tr>
                         <td>Welcome</td>
-                        <td><?php echo $about_us['Welcome'] ?></td>
+                        <td><?php echo $about_us['a_welcome'] ?></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td>Head</td>
-                        <td><?php echo $about_us['MZV'] ?></td>
+                        <td>Desc</td>
+                        <td><?php echo $about_us['a_description'] ?></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td>Misioni</td>
-                        <td><?php echo $about_us['Misioni'] ?></td>
+                        <td>Message</td>
+                        <td><?php echo $about_us['a_message'] ?></td>
                         <td></td>
                     </tr>
-                    <tr>
-                        <td>Vizioni</td>
-                        <td><?php echo $about_us['Vizioni'] ?></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Vlerat</td>
-                        <td><?php echo $about_us['Vlerat'] ?></td>
-                        <td></td>
-                    </tr>
+                   
                 </table>
             </div>
         </div>
@@ -203,24 +195,17 @@
                     <form action="" method="POST">
                         <div id="contact-form-group" class="form-group">
                             <label id="heading-contact-phone" class="contact-phone">Welcome:</label>
-                            <input id="inputButtons" type="text" value="<?php echo $about_us['Welcome']; ?>" name="Welcome" style="position:relative;left:5px;">
+                            <input id="inputButtons" type="text" value="<?php echo $about_us['a_welcome']; ?>" name="welcome" style="position:relative;left:5px;">
                         </div>
                         <div class="form-group">
-                            <label id="title-contact-phone" class="contact-phone">Head:</label>
-                            <input id="inputButtons" type="text" value="<?php echo $about_us['MZV']; ?>" name="MZV" style="position:relative;left:19px;">
+                            <label id="title-contact-phone" class="contact-phone">Desc:</label>
+                            <input id="inputButtons" type="text" value="<?php echo $about_us['a_description']; ?>" name="desc" style="position:relative;left:19px;">
                         </div>
                         <div class="form-group">
-                            <label id="title-contact-phone" class="contact-phone">Misioni:</label>
-                            <input id="inputButtons" type="text" value="<?php echo $about_us['Misioni']; ?>" name="Misioni" style="position:relative;left:-3px;">
+                            <label id="title-contact-phone" class="contact-phone">Message:</label>
+                            <input id="inputButtons" type="text" value="<?php echo $about_us['a_message']; ?>" name="message" style="position:relative;left:-3px;">
                         </div>
-                        <div class="form-group">
-                            <label id="title-contact-phone" class="contact-phone">Vizioni:</label>
-                            <input id="inputButtons" type="text" value="<?php echo $about_us['Vizioni']; ?>" name="Vizioni" style="position:relative;left:5px;">
-                        </div>
-                        <div class="form-group">
-                            <label id="title-contact-phone" class="contact-phone">Vlerat:</label>
-                            <input id="inputButtons" type="text" value="<?php echo $about_us['Vlerat']; ?>" name="Vlerat" style="position:relative;left:12px;">
-                        </div>
+                        
                         <button type="submit" name="submitted" class="addButton">Update</button>
                         <button type="button" class="cancelButton">Close</button>
                     </form>

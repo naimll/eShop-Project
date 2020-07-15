@@ -25,13 +25,14 @@ class CartController
     }
     public function getByUser($user)
     {
-        $query = $this->db->pdo->prepare('SELECT c.cart_id as order_id, u.u_name as client_name, u.u_email as client_email,
-                 p.p_code as pcode, p.p_name as title, cast(p.p_price as decimal(10,2)) as price,p.p_image as product_image,p.p_performance as p_performance
-                  FROM cart c
-                JOIN product p ON c.p_id = p.p_id
-                JOIN users u ON c.user_id = u.u_id
-                where u.u_id=100');
-                $query->bindParam(':id_u', $user);
+        $sql='SELECT c.cart_id as order_id, u.u_name as client_name, u.u_email as client_email,
+        p.p_code as pcode, p.p_name as title, cast(p.p_price as decimal(10,2)) as price,p.p_image as product_image,p.p_performance as p_performance
+         FROM cart c
+       JOIN product p ON c.p_id = p.p_id
+       JOIN users u ON c.user_id = u.u_id
+       where u.u_id='.$user;
+        $query = $this->db->pdo->prepare($sql);
+                // $query->bindParam(':id_u', $user);
                 $query->execute();
             
         return $query->fetchAll(PDO::FETCH_BOTH);
@@ -39,8 +40,8 @@ class CartController
 
     public function store($user, $product)
     {
-        $query = $this->db->pdo->prepare('INSERT INTO cart (c_product_id, c_user_id)
-                                     VALUES (:product, :user)');
+        $query = $this->db->pdo->prepare('INSERT INTO cart (user_id, p_id,product_quantity)
+                                     VALUES (:user,:product,1)');
         $query->bindParam(':product', $product);
         $query->bindParam(':user', $user);
         $query->execute();
@@ -72,7 +73,7 @@ class CartController
        
         $query = $this->db->pdo->prepare('DELETE FROM cart WHERE cart_id = :cart_id');
         $query->execute(['cart_id' => $cart_id]);
-        return header('Location: ../cart.php');
+        return header('Location: ./cart.php');
         
     }
 }

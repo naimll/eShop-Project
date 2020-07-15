@@ -82,7 +82,7 @@
             <p><?php echo $product['p_description']?></p>
             <h3><?php echo $product['p_price']?>$</h3>
            
-            <button><i class="fas fa-cart-plus"></i>ADD TO CART</button>
+            <a href="controller/addCart.php?id=<?php echo $_SESSION['user_id'] ?>&product=<?php echo $product['p_id']?>"> <button><i class="fas fa-cart-plus"></i>ADD TO CART</button></a>
 
         </div>
         <?php endforeach ?>

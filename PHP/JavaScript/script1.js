@@ -55,12 +55,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+// var sub=document.getElementById('submitReg');
+// var form=document.getElementById('Register-form');
+// sub.addEventListener('click',function(e){
+//     e.preventDefault();
+//     if(checkInput()){
+//         return
+//     }else{
+//         submitForm('Reg-form');
+//     }
+// });
 
 
-
-function formvalidation() {
-    checkInput();
-}
 
 function checkInput() {
    
@@ -68,44 +74,52 @@ function checkInput() {
         showError('nameError', 'Name cannot be blank');
         nameR.classList.add("error");
         nameR.focus();
-
+        return true;
     } else {
         showSuccess('nameError');
         nameR.classList.remove("error");
-
+        
     }
     if (lastnameR.value == null || lastnameR.value == '') {
         showError('lastnameError', 'Lastname cannot be blank');
         lastnameR.classList.add("error");
         lastnameR.focus();
+        return true;
     } else {
         showSuccess('lastnameError');
         lastnameR.classList.remove("error");
+        
     }
     if (lastnameR.value.length < 5) {
         showError('lastnameError', 'Last name must be at least 5 characters');
         lastnameR.classList.add("error");
         lastnameR.focus();
+        return true;
     } else {
         showSuccess('lastnameError');
         lastnameR.classList.remove("error");
+       
     }
     if (validateEmail(emailR.value)) {
         showSuccess('emailError');
         emailR.classList.remove("error");
+        
     } else {
         showError('emailError', 'Not a valid email address');
         emailR.classList.add("error");
         emailR.focus();
+        return true;
     }
 
     if (passwordR == null || passwordR.value.length < 8) {
         showError('passwordError', 'Password must be at least 8 characters');
         passwordR.classList.add("error");
         passwordR.focus();
+        return true;
     } else {
         showSuccess('passwordError');
         passwordR.classList.remove("error");
+        
     }
 
 }
@@ -137,18 +151,18 @@ function validateEmail(email) {
 //     });
     
 // });
-    var x=document.getElementById("submitLogin");
-    x.addEventListener('click',function(e){
-       
-      
-    e.preventDefault();
-    if(!validateUserToLogin()){
-          submitForm('Login-form');
-    }
+    // var xyz=document.getElementById("submitLogin");
+    // xyz.addEventListener('click',function(e){
+    // e.preventDefault();
+    // if(validateUserToLogin()){
+    //       submitForm('Login-form');
+    // }else{
+    //     return;
+    // }
        
      
     
-    });
+    // });
 
 function submitForm(element){
     var myform=document.getElementById(element);
@@ -158,21 +172,22 @@ function validateUserToLogin() {
     if (validateEmail(emailL.value)) {
         showSuccess('loginEmailError');
         emailL.classList.remove("error");
-        return false;
+       
     } else {
         showError('loginEmailError', 'Not a valid email address');
         emailL.classList.add("error");
-        return true;
+        return
 
     }
     if (passwordL == null || passwordL.value == '') {
         showError('loginPasswordError', 'Password cannot be blank');
         passwordL.classList.add("error");
-        return true;
+        return;
     } else {
         showSuccess('loginPasswordError');
         passwordL.classList.remove("error");
-        x.submit();
-        return false;
+       
+          return true;
+
     }
 }

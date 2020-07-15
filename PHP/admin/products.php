@@ -1,6 +1,6 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -153,17 +153,15 @@
 <body>
     
     <?php
-    require './../controllers/ProductController.php';
-    require './../controllers/CategoryController.php';
+    require './../controller/ProductController.php';
+   
 
     $product = new ProductController;
-    $category = new CategoryController;
-
     $products = $product->all();
-    $categories = $category->all();
+    
 
     if (isset($_POST['createProduct'])) {
-        $product->store($_SESSION['id'], $_POST);
+        $product->store($_POST);
     }
 
     ?>
@@ -173,7 +171,7 @@
 
         <div id="dashboard-container">
             <div class="content-title">
-                <h1 class="page-title"><a href="users.php">Dashboard</a></h1>
+                <h1 class="page-title"><a href="users.php">Dashboard - Products</a></h1>
             </div>
             <div class="main-content">
                 <table class="table">
@@ -181,13 +179,10 @@
                         <th>ID</th>
                         <th>Title</th>
                         <th>Code</th>
-                        <th>Admin</th>
                         <th>Price</th>
-                        <th>Category</th>
                         <th>Description</th>
                         <th>Image</th>
-                        <th>Date of Creation</th>
-                        <th>Quantity</th>
+                        
                         <th></th>
                         <th><button id="myBtn" class="button1" style="float:right;">ADD PRODUCT</button></th>
                     </tr>
@@ -196,13 +191,10 @@
                             <td><?php echo $product['id'] ?></td>
                             <td><?php echo $product['name'] ?></td>
                             <td><?php echo $product['code'] ?></td>
-                            <td><?php echo $product['user'] ?></td>
+                            
                             <td><?php echo $product['price'] ?></td>
-                            <td><?php echo $product['category'] ?></td>
                             <td><?php echo $product['description'] ?></td>
                             <td><?php echo $product['image'] ?> </td>
-                            <td><?php echo $product['date'] ?></td>
-                            <td><?php echo $product['quantity'] ?></td>
                             <td><a href="controllers/edit-product.php?id=<?php echo $product['id'] ?>" style="float: right">Edit</a></td>
                             <td><a href="controllers/delete-product.php?id=<?php echo $product['id'] ?>" style="float:right">Remove</a></td>
                         </tr>
@@ -229,31 +221,20 @@
                                 <label id="title-contact-phone" class="contact-phone">Kodi:</label>
                                 <input required id="inputButtons" type="text" name="product_code" style="position:relative;left:19px;">
                             </div>
-                            <div class="form-group">
-                                <label id="title-contact-phone" class="contact-phone">Kategoria:</label>
-                                <select id="selectors" name="product_category" required>
-                                    <option value="" selected>Choose a category:</option>
-                                    <?php foreach ($categories as $category) : ?>
-                                        <option value="<?php echo $category["category_id"] ?>"><?php echo $category["category_name"] ?></option>
-                                    <?php endforeach ?>
-                                </select>
-                            </div>
+                           
                             <div class="form-group">
                                 <label id="title-contact-phone" class="contact-phone">Çmimi:</label>
                                 <input required id="inputButtons" type="text" name="product_price" style="position:relative;left:5px;">
                             </div>
                             <div class="form-group">
-                                <label id="title-contact-phone" class="contact-phone">Përshkrimi i shkurtër:</label>
-                                <input required id="inputButtons" type="text" name="product_short_description" style="position:relative;left:5px;">
+                                <label id="title-contact-phone" class="contact-phone">Përformanca:</label>
+                                <input required id="inputButtons" type="text" name="product_performance" style="position:relative;left:5px;">
                             </div>
                             <div class="form-group">
                                 <label id="title-contact-phone" class="contact-phone">Përshkrimi:</label>
                                 <input required id="inputButtons" type="text" name="product_description" style="position:relative;left:5px;">
                             </div>
-                            <div class="form-group">
-                                <label id="title-contact-phone" class="contact-phone">Sasia:</label>
-                                <input required id="inputButtons" type="text" name="product_quantity" style="position:relative;left:5px;">
-                            </div>
+                            
                             <div class="form-group">
                                 <label id="title-contact-phone" class="contact-phone">Foto:</label>
                                 <input required type="file" name="product_image" accept="image/*">

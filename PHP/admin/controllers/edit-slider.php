@@ -1,5 +1,5 @@
 <?php
-require './../../controllers/SliderController.php';
+require './../../controller/SliderController.php';
 
 $slider = new SliderController;
 

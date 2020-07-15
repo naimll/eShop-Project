@@ -1,6 +1,11 @@
 <?php
-include_once "./database/database.php";
-include_once "./model/contactModel.php";
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= '/eShop-Project/PHP/database/database.php';
+include_once($path);
+
+$path1 = $_SERVER['DOCUMENT_ROOT'];
+$path1 .= '/eShop-Project/PHP/model/contactModel.php';
+include_once($path1);
 class contactController
 {
 
@@ -12,9 +17,11 @@ class contactController
         $this->obj=new Database();
        
     }
+    
+   
     public function getAllContact()
     {
-        $query=$this->db->pdo->query('SELECT * FROM contact');
+        $query=$this->obj->pdo->query('SELECT * FROM contact');
         return $query->fetchAll();
     }
     public function create(Contact $Con)
@@ -45,6 +52,14 @@ class contactController
         $statement=$this->conn->pdo->prepare($sql);
         $statement->bindParam(":name",$this->Contact->getName());
         $statement->execute();
+    }
+    
+    public function destroy($id)
+    {
+        $query = $this->obj->pdo->prepare('DELETE FROM contact WHERE c_id = :id');
+        $query->execute(['id' => $id]);
+
+        return header('Location: contacts.php');
     }
     
 }

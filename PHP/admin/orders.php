@@ -31,7 +31,7 @@
 <body>
 
     <?php
-    require './../controllers/CartController.php';
+    require './../controller/cartController.php';
 
     $cart = new CartController;
     $carts = $cart->all();
@@ -45,7 +45,7 @@
 
         <div id="dashboard-container">
             <div class="content-title">
-                <h1 class="page-title"><a href="users.php">Dashboard</a></h1>
+                <h1 class="page-title"><a href="users.php">Dashboard - Orders</a></h1>
             </div>
             <div class="main-content">
                 <table class="table">
@@ -56,7 +56,7 @@
                         <th>Product Code</th>
                         <th>Product Name</th>
                         <th>Price</th>
-                        <th>Date</th>
+                        
                     </tr>
                     <?php foreach ($carts as $cart) : ?>
                         <tr>
@@ -66,18 +66,10 @@
                             <td><?php echo $cart['pcode'] ?></td>
                             <td><?php echo $cart['title'] ?></td>
                             <td><?php echo $cart['price'] ?></td>
-                            <td><?php echo $cart['date'] ?></td>
+                        
                         </tr>
                     <?php endforeach ?>
-                    <!-- <tr>
-                            <td>123456</td>
-                            <td>Client</td>
-                            <td>client@gmail.com</td>
-                            <td>PC0</td>
-                            <td>Product</td>
-                            <td>$000</td>
-                            <td>Date</td>
-                        </tr> -->
+                    
                 </table>
 
             </div>

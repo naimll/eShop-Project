@@ -1,5 +1,5 @@
 <?php
-    require './../../controllers/ProductController.php';
+    require './../../controller/ProductController.php';
 
     $product = new ProductController;
 
@@ -9,5 +9,5 @@
 
     $product->destroy($productId);
 
-    header('Location: ./../products.php')
+     header('Location: ./../products.php');
 ?>

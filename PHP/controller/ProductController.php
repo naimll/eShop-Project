@@ -1,6 +1,8 @@
 <?php
 
-include_once './database/database.php';
+$path = $_SERVER['DOCUMENT_ROOT'];
+$path .= '/eShop-Project/PHP/database/database.php';
+include_once($path);
 
 class ProductController
 {
@@ -14,7 +16,7 @@ class ProductController
     public function all()
     {
         $query = $this->db->pdo->query('SELECT p.p_id as id, p.p_name as name, p.p_code as code,
-        convert(p.p_price as decimal(10,2)),p.p_description as description, p.p_performance as performance, p.p_image as image
+        cast(p.p_price as decimal(10,2))as price,p.p_description as description, p.p_performance as performance, p.p_image as image
         FROM product p');
 
         return $query->fetchAll();
@@ -55,7 +57,7 @@ class ProductController
         $query->bindParam(':product_code', $request['product_code']);
         $query->execute();
 
-        return header('Location: products.php');
+      
     }
 
     public function update($product_id, $request)
@@ -75,7 +77,7 @@ class ProductController
             'product_id' => $product_id
         ]);
 
-        return header('Location: products.php');
+        // return header('Location: ../products.php');
     }
 
     public function destroy($id)
@@ -83,6 +85,6 @@ class ProductController
         $query = $this->db->pdo->prepare('DELETE FROM product WHERE p_id = :id');
         $query->execute(['id' => $id]);
 
-        return header('Location: products.php');
+        //  return header('Location: products.php');
     }
 }
