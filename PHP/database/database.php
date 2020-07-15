@@ -6,14 +6,21 @@ class Database
     private $password = 'naja123';
     private $databaseName = 'eShop';
 
-    public $connection;
+    public $pdo;
+  
     public function __construct()
     {
+        
         try {
-            $connection = new PDO("sqlsrv:Server=$this->servername;Database=$this->databaseName", $this->user, $this->password);
-            $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            if(!isset($_SESSION)) 
+            { 
+                session_start(); 
+            }
+            $link = new PDO("sqlsrv:Server=$this->servername;Database=$this->databaseName", $this->user, $this->password);
+            $this->pdo=$link;
         } catch (PDOException $e) {
             die("ERROR ".$e.getMessage());
+            
         }
         
     }
