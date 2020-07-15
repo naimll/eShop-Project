@@ -44,11 +44,6 @@ class CartController
         $query->bindParam(':product', $product);
         $query->bindParam(':user', $user);
         $query->execute();
-
-        $updateQuery = $this->db->pdo->prepare('UPDATE product SET product_quantity = product_quantity - 1 WHERE product_id = :product_id');
-        $updateQuery->execute(['product_id' => $product]);
-
-        return header('Location: cart.php');
     }
 
     public function edit($cart_id)
